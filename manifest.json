@@ -1,0 +1,52 @@
+{
+    "manifest_version": 2,
+    "name": "PhpSpec",
+    "version": "0.1",
+    "description": "PhpSpec Chrome Extension",
+    "permissions": [
+        "http://localhost/*",
+        "tabs",
+        "http://*/",
+        "activeTab",
+        "storage",
+        "notifications"
+    ],
+    "background": {
+        "scripts": [ "background.js" ],
+        "persistent": false
+    },
+    "page_action": {
+        "default_icon": "icon48.png",
+        "default_name": "Popup",
+        "default_popup": "popup.html"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "http://github.com/*",
+                "https://github.com/*"
+            ],
+            "js": ["contentscript.js"],
+            "run_at": "document_idle",
+            "all_frames": false
+        }
+    ]
+//    ,
+//    "background_page": "background.html",
+//    "icons": {
+//        "48": "icon48.png"
+//    },
+//    "content_scripts": [
+//        {
+//            "matches": ["http://*/*", "https://*/*"],
+//            "js": [
+//                "content.js"
+//            ]
+//        }
+//    ],
+//    "browser_action": {
+//        "default_icon": "icon19.png", // required
+//        "default_title": "List Templates",      // optional; shown in tooltip
+//        "default_popup": "popup.html"        // optional
+//    }
+}
